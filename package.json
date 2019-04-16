@@ -1,0 +1,27 @@
+{
+  "name": "layered",
+  "version": "1.0.0",
+  "description": "``` npm install  npm run start  ```",
+  "main": "index.js",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./business-layer/blayer-user.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachgoll/layered-architecture-example-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zachgoll/layered-architecture-example-app/issues"
+  },
+  "homepage": "https://github.com/zachgoll/layered-architecture-example-app#readme"
+}
