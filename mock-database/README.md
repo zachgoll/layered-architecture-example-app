@@ -1,1 +1,0 @@
-This database acts like a database and prevents users from having to actually connect to a real database to run this app
