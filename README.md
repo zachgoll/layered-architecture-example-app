@@ -157,7 +157,7 @@ The presentation layer only needs to know the data structure of the response giv
 The presentation layer is usually initiated by a user action.  For simplicity, we'll assume that to retrieve your user profile, you must click a button to submit a form where the only input is your email.  So the user clicks a button, and the presentation layer implements the following method: 
 
 ```javascript
-// File: presentation-layer-user.js
+// File: presentation-layer-user.jsf
 
 function getDataFromBusinessLayer() {
     event.preventDefault();
