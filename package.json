@@ -4,6 +4,7 @@
   "description": "``` npm install  npm run start  ```",
   "main": "index.js",
   "dependencies": {
+    "cors": "^2.8.5",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "mongoose": "^5.5.2"
@@ -11,7 +12,9 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./business-layer/blayer-user.js"
+    "start-api": "node ./business-layer/business-layer-user.js",
+    "start-static-html": "node ./presentation-layer/server-static.js",
+    "all-in-one": "node ./business-layer/business-layer-user.js & node ./presentation-layer/server-static.js &"
   },
   "repository": {
     "type": "git",

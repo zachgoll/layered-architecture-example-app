@@ -26,9 +26,26 @@ db.users.insert( { name: "Zach", email: "zach@email.com", profileUrl: "https://s
 export DB_USER=yourname
 export DB_PW=yourpassword
 
-# Start the app
+# Download dependencies
 npm install 
-npm run start 
+```
+
+For maximum separation of duties, I have implemented a simple static server that runs the `index.html` file and an API server that makes the API in the business layer available.  In order to run the app, we will need to run both of these, so open up two terminals and the run the following commands.
+
+```bash 
+# Terminal 1
+npm run start-api
+```
+
+```bash 
+# Terminal 2
+npm run start-static-html
+```
+
+If you want to run it all in a single terminal, execute the following command:
+
+```bash 
+npm run all-in-one
 ```
 
 # Explanation 
@@ -106,16 +123,17 @@ So here is a file from the business layer that will use the data layer to get th
 
 var express = require('express');
 var app = express();
+var cors = require('cors');
 var mongoose = require('mongoose');
 var User = require('../data-layer/data-layer-user');
+
+// This will allow our presentation layer to retrieve data from this API without
+// running into cross-origin issues (CORS)
+app.use(cors());
 
 // Connect to running database
 mongoose.connect(`mongodb://${process.env.DB_USER}:${process.env.DB_PW}@127.0.0.1:27017/test_db`, 
     {useNewUrlParser: true});
-
-// ====
-// ... Parts of file omitted for brevity
-// ==== 
 
 // API Call
 app.get('/get-user/:useremail', function(req, res) {
@@ -124,8 +142,8 @@ app.get('/get-user/:useremail', function(req, res) {
     });    
 });
 
-app.listen(8080);
-console.log("Visit app at http://localhost:8080")
+app.listen(8081);
+console.log("App is running at http://localhost:8081");
 ```
 
 What we have done here in the business layer is create a simple API.  If we visit our application at the path `/get-user/:user-email`, we should receive a data object back in the form of JSON.  The business layer has called the data layer's `getUserByEmail(email)` method without knowing the code behind it.
@@ -154,4 +172,5 @@ function getDataFromBusinessLayer() {
 }
 ```
 
-Feel free to run the application to see how this all works!
+This will make a call to the business layer which will make a call to the data layer which will make a call to the actual database.
+
