@@ -7,7 +7,7 @@ mongo
 
 use test_db
 
-db.create(
+db.createUsersdf(
     {
         user: "yourname",
         pwd: "yourpassword",
